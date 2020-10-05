@@ -20,16 +20,13 @@ html {
 }
 
 #graph {
-    background: lightgrey;
+    background: #d3d3d3;
 }
 
 #logo {
-    display: inline;
-    vertical-align: middle;
-    margin: 10px;
+    width: 30%;
+    float: left;
     padding: 5px;
-    width: 15%;
-    float: right;
 }
 
 #title {
@@ -37,13 +34,20 @@ html {
     color: white;
     margin: 10px;
     padding: 5px;
+
     display: inline-block;
+
     /*
     width: 500px;
     border-radius: 5px;
     border 0px;
     background: white;
     */
+}
+
+#gh-link {
+    float: right;
+    margin: 10px;
 }
 
 #table-container {

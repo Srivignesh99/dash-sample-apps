@@ -2,6 +2,7 @@ import dash
 from dash.dependencies import Input, Output, State
 import dash_html_components as html
 import dash_core_components as dcc
+import dash_bootstrap_components as dbc
 import dash_table
 import plotly.express as px
 import re
@@ -158,7 +159,11 @@ def shape_data_remove_timestamp(shape):
     return new_shape
 
 
-external_stylesheets = ["assets/style.css", "assets/app_bounding_box_style.css"]
+external_stylesheets = [
+    dbc.themes.BOOTSTRAP,
+    "assets/style.css",
+    "assets/app_bounding_box_style.css",
+]
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 filelist = [
@@ -182,8 +187,28 @@ app.layout = html.Div(
         html.Div(
             id="banner",
             children=[
-                html.H1("Bounding Box Classification App", id="title"),
-                html.Img(id="logo", src=app.get_asset_url("dash-logo-new.png")),
+                dbc.Row(
+                    [
+                        dbc.Col(
+                            html.Img(
+                                id="logo", src=app.get_asset_url("dash-logo-new.png")
+                            )
+                        ),
+                        dbc.Col(
+                            html.Div("Bounding Box Classification App", id="title")
+                        ),
+                        dbc.Col(
+                            dbc.Button(
+                                "View Code on github",
+                                outline=True,
+                                color="primary",
+                                href="https://github.com/plotly/dash-sample-apps/tree/master/apps/dash-image-annotation",
+                                id="gh-link",
+                            )
+                        ),
+                    ],
+                    align="center",
+                )
             ],
             className="twelve columns",
         ),
@@ -432,4 +457,4 @@ function(download_button_n_clicks)
 
 
 if __name__ == "__main__":
-    app.run_server()
+    app.run_server(debug=True)
